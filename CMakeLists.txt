@@ -1,7 +1,18 @@
 project(omni_cam)
 cmake_minimum_required (VERSION 2.8.3)
 
+set(CMAKE_CXX_FLAGS "-std=c++11 -DEIGEN_DONT_PARALLELIZE")
+
 find_package(catkin_simple REQUIRED)
+
+
+find_package(Eigen3 REQUIRED)
+include_directories(
+    ${EIGEN3_INCLUDE_DIR}
+)
+
+
+
 catkin_simple(ALL_DEPS_REQUIRED)
 
 set(HEADERS include/omni_cam/ocam.h)

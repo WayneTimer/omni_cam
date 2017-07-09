@@ -1,8 +1,8 @@
 #pragma once
 
+#include <iostream>
 #include <memory>
 #include <string>
-#include <iostream>
 
 #include <Eigen/Dense>
 
@@ -45,12 +45,15 @@ class OCam
   // Returns the distortion parameters
   Eigen::VectorXd getDistortionParameters() const;
 
- private:
+  const Eigen::Matrix<double, 12, 1> inverse_polynomial_;
+
   const Eigen::Vector2i image_size_;
+
+ private:
 
   const Eigen::Matrix<double, 5, 1> polynomial_;
   const Eigen::Vector2d principal_point_;
-  const Eigen::Matrix<double, 12, 1> inverse_polynomial_;
+//  const Eigen::Matrix<double, 12, 1> inverse_polynomial_;
 
   const Eigen::Matrix2d affine_correction_;
   const Eigen::Matrix2d affine_correction_inverse_;
